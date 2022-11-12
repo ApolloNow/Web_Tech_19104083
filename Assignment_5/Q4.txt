@@ -1,0 +1,1 @@
+The following code snippet was compiled correctly and the output would be 21.

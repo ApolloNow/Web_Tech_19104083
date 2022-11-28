@@ -1,69 +1,55 @@
 import java.util.*;
-
-class Calculator{
-    int number=0;
-    Calculator(String str){
-        try{
-            number=Integer.parseInt(str);
-        } catch(NumberFormatException nfe){
-            System.out.println("Number format exception has occured. Please input number in correct format.");
-        }     
+class Calculator {
+    private int num1;
+    private int num2;
+    public Calculator(int num1, int num2) {
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+    public int addition() {
+        int ans = num1+num2;
+        System.out.println("Addition: " + ans);
+        return ans;
+    }
+    public int subtraction() {
+        int ans = num1-num2;
+        System.out.println("Subtraction: " + ans);
+        return ans;
+    }
+    public double division() {
+        double ans = (double) num1/num2;
+        System.out.println("Division: " +ans);
+        return ans;
     }
 
-    int addition(Calculator obj){
-        try{
-            return this.number+obj.number;
-        } catch(NumberFormatException nfe){
-            System.out.println("Number format exception has occured. Please input number in correct format.");
-            return 0;
-        }        
+    public int multiply() {
+        int ans = num1*num2;
+        System.out.println("Multiplication: " + ans);
+        return ans;
     }
-
-    int subtraction(Calculator obj){
-        try{
-            return this.number-obj.number;
-        } catch(NumberFormatException nfe){
-            System.out.println("Number format exception has occured. Please input number in correct format.");
-            return 0;
-        }        
-    }
-
-    int multiplication(Calculator obj){
-        try{
-            return this.number*obj.number;
-        } catch(NumberFormatException nfe){
-            System.out.println("Number format exception has occured. Please input number in correct format.");
-            return 0;
-        }        
-    }
-
-    int division(Calculator obj){
-        try{
-            return this.number/obj.number;
-        } catch(NumberFormatException nfe){
-            System.out.println("Number format exception has occured. Please input number in correct format.");
-            return 0;
-        } catch(ArithmeticException ae){
-            System.out.println("Divide by zero error");
-            return 0;
-        }        
-    }
-
-
 }
 
-
-public class Q3 {
-    public static void main(String[] args) {
-        Calculator c1 = new Calculator("123");
-        Calculator c2 = new Calculator(" 431");
-        Calculator c3 = new Calculator("0");
-        Calculator c4 = new Calculator(" ");
-
-        System.out.println(c1.addition(c3));
-        System.out.println(c1.subtraction(c2));
-        System.out.println(c1.division(c4));
-        
+public class Q3{
+    public static void main(String []args) {
+        Scanner sc = new Scanner(System.in);
+        int num1, num2;
+        try {
+            System.out.print("Input the first number : ");
+            num1 = Integer.parseInt(sc.nextLine());
+            System.out.print("Input the second number : ");
+            num2 = Integer.parseInt(sc.nextLine());
+            Calculator obj1 = new Calculator(num1, num2);
+            Calculator obj2 = new Calculator(num1, num2);
+            Calculator obj3 = new Calculator(num1, num2);
+            Calculator obj4 = new Calculator(num1, num2);
+            obj1.addition();
+            obj2.subtraction();
+            obj3.multiply();
+            obj4.division();
+        }
+        catch(NumberFormatException e) {
+            System.out.println("Incorrect input format " + e);
+        }
+        sc.close();
     }
-    
 }
